@@ -28,7 +28,7 @@ var ckDecode = function( ary ){
 }
 
 var lookupURL = function( e ){
-    var ptrn = /(?:^function\sckl\(\)\{var\sbmw=\[)([^\]]*)(?:\])/;
+    var ptrn = /(?:^function\s)(?:ckl|llll\(\)\{var\sbmw=\[)([^\]]*)(?:\])/;
     var ckm = document.getElementById( "ckl" );
 
     if ( ptrn.test( ckm.value ) == false ) {
