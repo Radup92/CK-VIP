@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
  <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="Generator" content="Radup">
-  <title>:: CKL 함수 디코더 ::</title>
+  <title>:: CKL function decoder ::</title>
   <style>#result-box { display: none; }</style>
  </head>
  <body>
   <div>
-    <label>CKL 함수 : <input id="ckl" type="text" /></label>
-    <button id="lookup">CKL 함수 디코딩</button>
+    <label>CKL Function: <input id="ckl" type="text" width="260" height="16" /></label>
+    <button id="lookup">Malware URL Check</button>
     </div>
-    <div id="result-box"><span>CKL 함수 : </span><span id="result"></span></div>
+    <div id="result-box"><span>Malware URL: </span> <span id="result"></span></div>
  </body>
 </html>
 <script type="text/javascript">
@@ -32,7 +32,7 @@ var lookupURL = function( e ){
     var ckm = document.getElementById( "ckl" );
 
     if ( ptrn.test( ckm.value ) == false ) {
-        window.alert( "잘못된 인수 입니다." );
+        window.alert( "wrong parameter!" );
         return;
     }
 
