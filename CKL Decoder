@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="Radup">
+  <title>:: CK 디코더 ::</title>
+  <style>#result-box { display: none; }</style>
+ </head>
+ <body>
+  <div>
+    <label>CKL 함수 : <input id="ckl" type="text" /></label>
+    <button id="lookup">악성URL 확인</button>
+    </div>
+    <div id="result-box"><span>악성코드 URL : </span><span id="result"></span></div>
+ </body>
+</html>
+<script type="text/javascript">
+<!--
+
+var ckDecode = function( ary ){
+    if ( typeof( ary ) != "object" ) return -1;
+    var ck = ary, a = "";
+    for ( var i = 0; i < ck.length; i++ ){
+        if ( ck[i] > 159 ) a += String.fromCharCode( ck[ i ] - 159 );
+    }
+    
+    return a;
+}
+
+var lookupURL = function( e ){
+    var ptrn = /(?:^function\sckl\(\)\{var\sbmw=\[)([^\]]*)(?:\])/;
+    var ckm = document.getElementById( "ckl" );
+
+    if ( ptrn.test( ckm.value ) == false ) {
+        window.alert( "잘못된 인수 입니다." );
+        return;
+    }
+
+    var res = ckDecode( ptrn.exec( ckm.value )[1].split(",") );
+    
+    if ( typeof res == "string" ){
+        document.getElementById( "result" ).innerHTML = res;
+        document.getElementById( "result-box" ).style.display = "block";
+    }
+}
+
+window.onload=function( ){
+    var btn = document.getElementById( "lookup" );
+    if ( btn.addEventListener ){
+        btn.addEventListener( "click", lookupURL );
+    }
+    else {
+        btn.attachEvent( "onclick", lookupURL );
+    }
+}
+
+//-->
+</script>
